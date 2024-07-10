@@ -15,14 +15,14 @@ pipeline{
 		}
 		stage('Code Checkout From Git'){
 			steps{
-				git branch: 'main', url: 'https://github.com/Cloud-Gen-DevOps-Projects/Zomato-Project.git'
+				git branch: 'main', url: 'https://github.com/MahammadFayazShaik/zomoto-test.git'
 			}
 		}
 		stage("SonarQube Code Analysis"){
 			steps{
 				withSonarQubeEnv('sonar-server'){
-					sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=zomato \
-                    -Dsonar.projectKey=zomato '''
+					sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Zomato-Test-Project \
+                    -Dsonar.projectKey=zomato-test '''
 				}
 			}
 		}
@@ -30,7 +30,7 @@ pipeline{
 			steps{
 				script{
 					 timeout(time: 2, unit: 'MINUTES'){
-					waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
+					waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
 				}
 			}
 		}
