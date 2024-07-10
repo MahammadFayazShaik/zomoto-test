@@ -69,7 +69,7 @@ pipeline{
 		}
 		stage("Creating Docker Container "){
 			steps{
-				sh 'docker run -d --name zomato-app1  ph zomato -p 3000:3000 fayaz2628/cloudzomato:latest'
+				sh 'docker run -d  zomato-app  ph zomato -p 3000:3000 fayaz2628/cloudzomato:latest'
 			}
 		}
 	}
