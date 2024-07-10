@@ -20,7 +20,7 @@ pipeline{
 		}
 		stage("SonarQube Code Analysis"){
 			steps{
-				withSonarQubeEnv('sonar-server'){
+				withSonarQubeEnv('sonar-scanner'){
 					sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Zomato-Test-Project \
                     -Dsonar.projectKey=zomato-test '''
 				}
